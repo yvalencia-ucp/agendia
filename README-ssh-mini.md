@@ -20,7 +20,7 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ```
 
-Copia tu clave pública y agrégala en **GitHub → Settings → Deploy keys → New SSH key → Write Permissions → Save**.
+Copia tu clave pública y agrégala en **GitHub → Settings → SSH and GPG keys → New SSH key**.
 
 - macOS:
 

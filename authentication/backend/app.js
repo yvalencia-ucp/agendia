@@ -1,0 +1,55 @@
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+
+// Importar rutas
+import authRoutes from './routes/auth.js';
+import usuarioRoutes from './routes/user.js';
+
+// Importar middleware de errores
+import { errorHandler, notFound } from './middleware/error.js';
+
+// Configuración de variables de entorno
+dotenv.config();
+
+// Crear aplicación Express
+const app = express();
+
+// Configuración de middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+  origin: [
+    'http://localhost:3030',
+    'http://localhost:3000'
+  ],
+  credentials: true
+}));
+app.use(helmet());
+app.use(morgan('dev'));
+
+// Configuración para archivos estáticos
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Rutas
+app.use('/api/auth', authRoutes);
+app.use('/api/usuarios', usuarioRoutes);
+
+// Ruta de prueba
+app.get('/', (req, res) => {
+  res.json({ mensaje: 'API del Sistema de Préstamos de Laboratorio' });
+});
+
+// Middleware para manejo de rutas no encontradas
+app.use(notFound);
+
+// Middleware para manejo de errores
+app.use(errorHandler);
+
+export default app;

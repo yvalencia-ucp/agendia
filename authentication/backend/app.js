@@ -43,7 +43,7 @@ app.use('/api/usuarios', usuarioRoutes);
 
 // Ruta de prueba
 app.get('/', (req, res) => {
-  res.json({ mensaje: 'API del Sistema de Préstamos de Laboratorio' });
+  res.json({ mensaje: 'API del Autentificacion' });
 });
 
 // Middleware para manejo de rutas no encontradas

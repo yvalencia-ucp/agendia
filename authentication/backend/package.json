@@ -1,7 +1,7 @@
 {
-  "name": "sistema-labfisica-backend",
+  "name": "sistema-agendia-backend",
   "version": "1.0.0",
-  "description": "API para el sistema de gestión de préstamos del laboratorio de física",
+  "description": "API para el sistema de autentificacion",
   "main": "app.js",
   "type": "module",
   "scripts": {
@@ -15,10 +15,9 @@
     "mongodb",
     "mongoose",
     "express",
-    "laboratorio",
     "prestamos"
   ],
-  "author": "Estudiantes Base de Datos II y Optativa I",
+  "author": "Nosotros",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",

@@ -10,14 +10,12 @@ export const esAdministrador = (req, res, next) => {
   }
 };
 
-// Middleware para verificar si el usuario pertenece al mismo laboratorio
 export const mismoLaboratorio = (req, res, next) => {
   // Si es administrador, permitir acceso
   if (req.usuario.tipo === 'administrador') {
     return next();
   }
 
-  // Verificar si el laboratorio_id coincide
   const laboratorioId = req.params.laboratorioId || req.body.laboratorio_id;
   
   if (laboratorioId && req.usuario.laboratorio_id.toString() === laboratorioId.toString()) {
@@ -25,7 +23,7 @@ export const mismoLaboratorio = (req, res, next) => {
   } else {
     res.status(403).json({
       success: false,
-      mensaje: 'Acceso denegado. No tienes permisos para este laboratorio'
+      mensaje: 'Acceso denegado. No tienes permisos'
     });
   }
 };
@@ -40,7 +38,7 @@ export const esPropietario = (req, res, next) => {
   } else {
     res.status(403).json({
       success: false,
-      mensaje: 'Acceso denegado. No eres el propietario de este recurso'
+      mensaje: 'Acceso denegado.'
     });
   }
 };

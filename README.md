@@ -66,7 +66,7 @@ git checkout -b feat/team-<n>-tarea
 
 ---
 
-### 4) Trabajar, ver estado, seleccionar cambios
+### 4) Trabajar, ver estado, seleccionar cambios.
 
 ```bash
 git status -sb      # qué cambió
